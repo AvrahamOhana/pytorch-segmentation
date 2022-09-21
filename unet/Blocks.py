@@ -8,7 +8,7 @@ class ConvBlock(nn.Module):
         if not mid_channels:
             mid_channels = out_channels
         
-        self.convs = nn.Sequential(
+        self.double_conv = nn.Sequential(
             nn.Conv2d(in_channels, mid_channels, kernel_size=3, padding=1, bias=False),
             nn.BatchNorm2d(mid_channels),
             nn.ReLU(inplace=True),
@@ -17,7 +17,7 @@ class ConvBlock(nn.Module):
             nn.ReLU(inplace=True)
         )
     def forward(self, x):
-        return self.convs(x)
+        return self.double_conv(x)
     
 class DownBlock(nn.Module):
     def __init__(self, in_channels, out_channels):
@@ -34,8 +34,10 @@ class DownBlock(nn.Module):
 class UpBlock(nn.Module):
     def __init__(self, in_channels, out_channels):
         super().__init__()
-        self.upscale = nn.Upsample(scale_factor=2, mode='bilinear', align_corners=True)
-        self.convs = ConvBlock(in_channels, out_channels, in_channels // 2)
+        
+
+        self.upscale = nn.ConvTranspose2d(in_channels, in_channels // 2, kernel_size=2, stride=2)
+        self.convs = ConvBlock(in_channels, out_channels)
     
     def forward(self, x1, x2):
         x1 = self.upscale(x1)
@@ -53,3 +55,4 @@ class UpBlock(nn.Module):
         
         x = self.convs(x)
         return x
+    
