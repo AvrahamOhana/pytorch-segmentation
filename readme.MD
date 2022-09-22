@@ -3,19 +3,19 @@ Apples segmentation using UNet
 
 
 ## Dataset
-MinneApple: A Benchmark Dataset for Apple Detection and Segmentation
-Download dataset:
+MinneApple Dataset. Download using bash script:
 ```console
 ./get_data.sh
 ```
-or:
+Or directly from:
 https://conservancy.umn.edu/handle/11299/206575
 
 ## UNet
-paper: https://arxiv.org/abs/1505.04597
+Paper: https://arxiv.org/abs/1505.04597
+Network:
 ![network architecture](unet.png)
 
 
 ## Results
-
+![res](res.jpg)
 
