@@ -12,10 +12,20 @@ https://conservancy.umn.edu/handle/11299/206575
 
 ## UNet
 Paper: https://arxiv.org/abs/1505.04597
+
 Network:
 ![network architecture](unet.png)
 
 
 ## Results
+
 ![res](res.jpg)
+
+## To Do
+
+- [x] Test Unet implementation
+- [ ] Add Deeplabv3 implementation 
+- [ ] make inference script more generic
+
+
 
