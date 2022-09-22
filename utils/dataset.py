@@ -15,6 +15,7 @@ class ApplesDataset(Dataset):
     def __getitem__(self, idx):
         name = self.ids[idx]
         image = cv2.imread("{}/{}".format(self.images_dir, name))
+        image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
         mask = cv2.imread("{}/{}".format(self.masks_dir, name))
         
     
