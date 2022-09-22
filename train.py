@@ -15,7 +15,7 @@ import torch.nn.functional as F
 
 
 val_percent = 0.1
-epochs = 50
+epochs = 10
 batch_size = 1
 learning_rate = 1e-5
 amp = True
