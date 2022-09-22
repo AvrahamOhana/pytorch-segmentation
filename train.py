@@ -15,9 +15,9 @@ import torch.nn.functional as F
 
 
 val_percent = 0.1
-epochs = 10
+epochs = 50
 batch_size = 1
-learning_rate = 1e-4
+learning_rate = 1e-5
 amp = True
 save_checkpoint= True
 
@@ -35,7 +35,7 @@ device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 
 # augmentations
 transform = A.Compose([
-    A.Resize(720, 720),
+    A.Resize(600, 600),
     A.RandomBrightnessContrast(p=0.4),
     A.HorizontalFlip(p=0.5),
     ToTensorV2(),
